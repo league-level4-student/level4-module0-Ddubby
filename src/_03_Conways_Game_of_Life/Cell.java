@@ -28,9 +28,10 @@ public class Cell implements Drawable{
 	 * (source: Wikipedia)
 	 * */
 	public void liveOrDie(int numNeighbors) {
-		if (numNeighbors < 2 || numNeighbors > 3) {
+		if ((numNeighbors < 2 || numNeighbors > 3) && isAlive == true) {
 			isAlive = false;
-		} else {
+		}
+		if (numNeighbors == 3 && !isAlive) {
 			isAlive = true;
 		}
 	}
@@ -48,7 +49,13 @@ public class Cell implements Drawable{
 	//    draws empty square if cell is dead
 	@Override
 	public void draw(Graphics g) {
-	
+		if (isAlive) {
+			g.setColor(Color.BLUE);
+			g.fillRect(x, y, 10, 10);
+		} else {
+			g.setColor(Color.DARK_GRAY);
+			g.drawRect(x, y, 10, 10);
+		}
 		
 		
 		
