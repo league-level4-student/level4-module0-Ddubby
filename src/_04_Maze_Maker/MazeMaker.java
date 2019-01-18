@@ -26,6 +26,13 @@ public class MazeMaker{
 		//5. call selectNextPath method with the randomly selected cell
 		selectNextPath(x);
 		//remove exterior wall of 2 cells
+		if (randGen.nextBoolean()) {
+			maze.getCell(0, randGen.nextInt(height)).setWestWall(false);
+			maze.getCell(4, randGen.nextInt(height)).setEastWall(false);	
+		} else {
+		maze.getCell(randGen.nextInt(width), 0).setNorthWall(false);
+		maze.getCell(randGen.nextInt(width), 4).setSouthWall(false);
+		}
 		return maze;
 	}
 
