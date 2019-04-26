@@ -3,6 +3,8 @@ package _02_Pixel_Art;
 import java.awt.FlowLayout;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 
@@ -61,5 +63,13 @@ public class PixelArtMaker implements MouseListener{
 
 	@Override
 	public void mouseExited(MouseEvent e) {
+	}
+	
+	private static void save(GridPanel data) {
+		try (FileOutputStream fos = new FileOutputStream(new File(DATA_FILE)); ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(data);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }
