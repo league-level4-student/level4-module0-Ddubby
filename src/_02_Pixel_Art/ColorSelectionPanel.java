@@ -6,6 +6,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
@@ -17,7 +23,8 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class ColorSelectionPanel extends JPanel implements MouseListener, ChangeListener, ActionListener{
+public class ColorSelectionPanel extends JPanel implements MouseListener, ChangeListener{
+	
 	private static final long serialVersionUID = 1L;
 	
 	public static final int MAX_COLOR = 256;
@@ -35,13 +42,13 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 	private JLabel colorLabel;
 	private BufferedImage colorImage;
 	
-	public JButton save;
+
 	public ColorSelectionPanel() {
 		rSlider = new JSlider(JSlider.VERTICAL);
 		gSlider = new JSlider(JSlider.VERTICAL);
 		bSlider = new JSlider(JSlider.VERTICAL);
 		
-		save = new JButton();
+
 		
 		rSlider.setMinimum(0);
 		rSlider.setMaximum(MAX_COLOR - 1);
@@ -56,8 +63,7 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		rSlider.addChangeListener(this);
 		gSlider.addChangeListener(this);
 		bSlider.addChangeListener(this);
-		
-		save.addActionListener(this);
+	
 		
 		addMouseListener(this);
 		
@@ -79,7 +85,6 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		add(gSlider);
 		add(new JLabel("blue"));
 		add(bSlider);
-		add(save);
 	}
 
 	public Color getSelectedColor() {
@@ -135,13 +140,9 @@ public class ColorSelectionPanel extends JPanel implements MouseListener, Change
 		add(colorLabel);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if (e.getSource() == save) {
-			
-		}
-	}
+	
+	
+
 	
 
 }
